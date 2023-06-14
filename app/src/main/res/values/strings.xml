@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">SQLite Demo</string>
+    <string name="studentName">FIRST NAME</string>
+    <string name="surName">SURNAME</string>
+    <string name="age">AGE</string>
+</resources>
