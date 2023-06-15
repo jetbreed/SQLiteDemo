@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +22,7 @@ public class DatabaseAccessModeller extends SQLiteOpenHelper {
     public DatabaseAccessModeller(@Nullable Context theMainActvityClass) {
         super(theMainActvityClass, "member.db", null, 1);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase member_db) {
@@ -108,6 +108,17 @@ public class DatabaseAccessModeller extends SQLiteOpenHelper {
         }else {
             return false;
         }
+    }
+
+    public boolean deleteAll(MemberModel memberModel){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + MEMBER;
+
+//        db.execSQL(queryString, null);
+        db.execSQL(queryString);
+//        db.close();
+        return true;
     }
 
 }

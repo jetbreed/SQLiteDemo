@@ -18,7 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     //    Class Members -> Referencing the widgets---
-    Button btnAdd, btnView;
+    Button btnAdd, btnDeleteAll;
     EditText firstName;
     EditText surName;
     EditText age;
@@ -34,23 +34,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnAdd = findViewById(R.id.btnAdd);
-        btnView = findViewById(R.id.btnView);
+        btnDeleteAll = findViewById(R.id.btnDeleteAll);
         firstName = findViewById(R.id.firstName);
         surName = findViewById(R.id.surName);
         age = findViewById(R.id.age);
         activeMember = findViewById(R.id.activeMember);
         listView = findViewById(R.id.listView);
 
-        databaseAccessModeller = new DatabaseAccessModeller(MainActivity.this);
-//        dssds
-        memberArrayList = new ArrayAdapter<MemberModel>(MainActivity.this, android.R.layout.simple_list_item_1, databaseAccessModeller.getResultList());
+        databaseAccessModeller =
+                new DatabaseAccessModeller(this);
+
+        memberArrayList =
+                new ArrayAdapter<MemberModel>
+                        (MainActivity.this,
+                                android.R.layout.simple_list_item_1,
+                                databaseAccessModeller.getResultList());
+
         listView.setAdapter(memberArrayList);
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnAdd.setOnClickListener(view -> {
                 try {
-                    memberModel = new MemberModel(-1, firstName.getText().toString(), surName.getText().toString(), Integer.parseInt(age.getText().toString()), activeMember.isChecked());
+                    memberModel = new MemberModel(
+                            -1,
+                            firstName.getText().toString(),
+                            surName.getText().toString(),
+                            Integer.parseInt(age.getText().toString()),
+                            activeMember.isChecked());
 //                    Toast.makeText(MainActivity.this, memberModel.toString(), Toast.LENGTH_SHORT).show();
                     DatabaseAccessModeller databaseAccessModeller = new DatabaseAccessModeller(MainActivity.this);
 
@@ -65,19 +74,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Inputs Required", Toast.LENGTH_SHORT).show();
                 }
 
-            }
         });
 
-        btnView.setOnClickListener(new View.OnClickListener() {
+        btnDeleteAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 databaseAccessModeller = new DatabaseAccessModeller(MainActivity.this);
-//                List<MemberModel> allMembers = databaseAccessModeller.getResultList();
+
+                boolean deleteSuccess = databaseAccessModeller.deleteAll(memberModel);
+                    Toast.makeText(MainActivity.this, "Status = " + deleteSuccess, Toast.LENGTH_SHORT).show();
 
                 memberArrayList = new ArrayAdapter<MemberModel>(MainActivity.this, android.R.layout.simple_list_item_1, databaseAccessModeller.getResultList());
                 listView.setAdapter(memberArrayList);
 
-//                Toast.makeText(MainActivity.this, allMembers.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 

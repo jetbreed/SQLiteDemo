@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Active Member"
-        android:textSize="55px"
+        android:textSize="65px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,23 +90,25 @@
         android:layout_marginEnd="8dp"
         android:background="#C71717"
         android:text="ADD"
+        android:padding="20dp"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnView"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDeleteAll"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnView"
-        app:layout_constraintTop_toTopOf="@+id/btnView" />
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteAll"
+        app:layout_constraintTop_toTopOf="@+id/btnDeleteAll" />
 
     <Button
-        android:id="@+id/btnView"
+        android:id="@+id/btnDeleteAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
         android:background="#DD1616"
-        android:text="VIEW"
+        android:text="DELETE ALL"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        android:padding="20dp"
         app:layout_constraintEnd_toStartOf="@id/btnAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activeMember" />
@@ -118,7 +120,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnView" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteAll" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
